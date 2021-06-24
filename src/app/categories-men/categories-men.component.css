@@ -1,0 +1,7 @@
+#menCategory ul li div{
+    color:blue;
+    cursor: pointer;
+}
+#menCategory ul li :hover{
+    color: #6c757d;;
+}

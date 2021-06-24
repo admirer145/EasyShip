@@ -1,0 +1,61 @@
+<div class="container">
+    <div class="row mt-2 mb-4">
+        <div class="col-md-8 offset-md-2 col-sm-12 offset-sm-0 text-center">
+            <h3>
+                Drop us a Mail
+            </h3>
+        </div>
+        <hr>
+        <div class="col-md-8 offset-md-2 col-sm-12 offset-sm-0">
+            <form [formGroup]="contactUsForm">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" formControlName="name" class="form-control">
+                    <div class="alert alert-danger"  *ngIf="(contactUsForm.get('name').touched && contactUsForm.get('name').invalid)">
+                        <p  *ngIf="contactUsForm.get('name').errors.required">
+                           Name is Required
+                        </p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="text" formControlName="email" class="form-control">
+                    <div class="alert alert-danger"  *ngIf="(contactUsForm.get('email').touched && contactUsForm.get('email').invalid)">
+                        <p  *ngIf="contactUsForm.get('email').errors.emailValidation || contactUsForm.get('email').errors.required">
+                           Invalid Email
+                        </p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="type">Type</label>
+                    <select id="type" formControlName="type" name="type" class="form-control">
+                        <option value="order">Order</option>
+                        <option value="payment">Payment</option>
+                        <option value="shipping">Shipping</option>
+                        <option value="other" selected>Other</option>
+                    </select>
+                    <div class="alert alert-danger"  *ngIf="(contactUsForm.get('type').touched && contactUsForm.get('type').invalid)">
+                        <p  *ngIf="contactUsForm.get('type').errors.required">
+                            Type is Required
+                        </p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="query">Description</label>
+                    <textarea type="text" id="query" name="query" formControlName="query" class="form-control h-100"></textarea>
+                    <!-- <input type="text" formControlName="query" class="form-control"> -->
+                    <div class="alert alert-danger"  *ngIf="(contactUsForm.get('query').touched && contactUsForm.get('query').invalid)">
+                        <p  *ngIf="contactUsForm.get('query').errors.required">
+                           Description is Required
+                        </p>
+                    </div>
+                </div>
+                <div class="row w-100">
+                    <button type="button" class="btn btn-primary m-auto" [disabled]="!contactUsForm.valid" (click)="contactUsFormEventHandler()">
+                        Submit
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,112 @@
+<div class="container" style="min-height:450px">
+    <div class="row">
+        <div class="col-12">
+            <h3>Choose Payment Mode</h3>
+        </div>
+        <hr/>
+        <div class="col-md-2 col-sm-4 mt-5">
+            <ul class="nav w-100 flex-column" style="font-size:1.1em">
+                <li class="active "><a href="#cashOnDelivery" data-toggle="tab" class="text-wrap">CASH ON DELIVERY</a></li>
+                <li class="mt-3"><a href="#creditDebitCard" data-toggle="tab" class="text-wrap">CREDIT Card</a></li>
+                <li class="mt-3"><a href="#phonepeGooglePay" data-toggle="tab" class="text-wrap">PHONEPE / GOOGLEPAY</a></li>
+                <li class="mt-3"><a href="#giftCard" data-toggle="tab" class="text-wrap">GIFT CARD</a></li>
+            </ul>
+        </div>
+        <div class="col-md-5 col-sm-8 mt-5" style="font-size:1.1em">
+            <div class="tab-content">
+                <div class="tab-pane" id="cashOnDelivery">
+                    <button class="btn btn-lg btn-primary w-50" (click)="cashOnDeliveryHandler()">Order</button>
+                </div>
+                <div class="tab-pane active" id="creditDebitCard">
+                    <div>
+                        Credit/Debit Card
+                    </div>
+                    <hr>
+                    <form >
+                        <div class="form-group">
+                            <label for="cardNumber">
+                                Card Number*
+                            </label>
+                            <input type="number" class="form-control" id="cardNumber">
+                        </div>
+                        <div class="form-group">
+                            <label for="cardName">
+                                Name on Card*
+                            </label>
+                            <input type="text" class="form-control" id="cardName">
+                        </div>
+                        <div class="form-group">
+                            <label for="expiryDate">
+                                Expiry Date*
+                            </label>
+                            <input type="month" class="form-control" id="expiryDate">
+                        </div>
+                         <div class="form-group">
+                            <label for="cvv">
+                                CVV*
+                            </label>
+                            <input type="number" class="form-control" id="cvv">
+                        </div>
+                        <div class="text-center">
+                            <button class="btn btn-primary mb-4 w-50">PAY</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="tab-pane" id="phonepeGooglePay">
+                    <div>
+                        PHONEPE/GOOGLEPAY
+                    </div>
+                    <hr>
+                    <form class="form-check">
+                        <div>     
+                            <input class="form-check-input" name="phonepeGooglePay" type="radio" id="phonepe"/>
+                            <label class="form-check-label" for="phonepe">PhonePe</label>
+                        </div>
+                        <div>
+                            <input class="form-check-input" name="phonepeGooglePay" type="radio" id="googlePay"/>
+                            <label class="form-check-label" for="googlePay">Google Pay</label>
+                        </div>
+                        <hr>
+                        <div>
+                            <button class="btn btn-large btn-primary w-50"> PAY </button>
+                        </div>
+                    </form>
+                </div>
+                <div class="tab-pane" id="giftCard">
+                    <div>
+                        ENTER GIFTCARD DETAILS
+                    </div>
+                    <hr>
+                    <div>
+                        <form class="form-group">
+                            <input type="text" class="form-control mt-2" placeholder="Gift Card Number" >
+                            <input type="text" class="form-control mt-2" placeholder="Gift Card Pin">
+                            <button class="btn btn-primary mt-3 mx-auto">ADD TO EASYSHIP CREDIT</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 offset-md-1 col-sm-6 offset-sm-3 mt-5" *ngIf="deliveryAddress">
+            <div>
+                Selected Address
+                <hr>
+                <div class="mt-1">
+                    {{deliveryAddress.name}}
+                </div>
+                <div  class="mt-1">
+                    {{deliveryAddress.houseNumber}},  {{deliveryAddress.street}},
+                    {{deliveryAddress.city}},  {{deliveryAddress.state}} -
+                    {{deliveryAddress.pincode}} 
+                </div>
+                <div  class="mt-1">
+                    Mobile: {{deliveryAddress.mobileNumber}}
+                </div>
+            </div>
+            <hr>
+            <div class="mt-3">
+                Total Price: {{totalPrice | currency:'INR'}}                
+            </div>
+        </div>
+    </div>
+</div>

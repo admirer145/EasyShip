@@ -1,0 +1,22 @@
+<div class="container-fluid align-self-center">
+  <!-- Header -->
+  <div class="row header" *ngIf="this.router.url != '/error'">
+    <div class="col-12">
+      <app-header></app-header>
+    </div>
+  </div>
+
+  <!-- Content -->
+  <div class="row" style="min-height: 450px;">
+    <div class="col-12">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="row bg-dark text-white" *ngIf="(this.router.url != '/login' && this.router.url != '/signup' && this.router.url != '/error')">
+    <div class="col-12">
+      <app-footer></app-footer>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,72 @@
+
+<!-- Carousel -->
+<div id="mainCarousel" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item">
+        <a routerLink="/categories"><img class="d-block w-100" src="../../assets/carousel/carousel3.jpg" alt="third slide"></a>
+      </div>
+       <div class="carousel-item">
+        <a routerLink="/categories"><img class="d-block w-100" src="../../assets/carousel/carousel4.jpg" alt="fourth slide"></a>
+      </div>
+      <div class="carousel-item">
+        <a routerLink="/categories/men"><img class="d-block w-100" src="../../assets/carousel/carousel5.jpg" alt="Fifth slide"></a>
+      </div>
+      <div class="carousel-item">
+        <a routerLink="/categories/women"><img class="d-block w-100" src="../../assets/carousel/carousel6.jpg" alt="Sixth slide"></a>
+      </div>
+      <div class="carousel-item active">
+        <a routerLink="/categories/kid"><img class="d-block w-100" src="../../assets/carousel/carousel7.jpg" alt="Seventh slide"></a>
+      </div>
+      <div class="carousel-item">
+        <a routerLink="/categories/kid"><img class="d-block w-100" src="../../assets/carousel/carousel8.jpg" alt="Eighth slide"></a>
+      </div>
+    </div>
+    <a class="carousel-control-prev bg-secondary" href="#mainCarousel" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next bg-secondary" href="#mainCarousel" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+</div>
+
+
+<!-- Main Content-->
+<div class="mt-1 mb-4">
+    <!-- Featured Type -->
+    <div class="mt-5">
+        <h2 class="mb-4">FEATURED BRANDS</h2>
+        <div class="row"> 
+            <div class="col-md-3 col-sm-4 col-xs-6" *ngFor="let myImage of brandImages;">
+                <div class="card mb-2">
+                    <img class="card-img-top" [src]="myImage.imageUrl" [alt]="myImage.imageAlt" (click)="homePageImageClicked(myImage.imageId, 'brand')">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- MEN CATEGORY -->
+    <div class="mt-5">
+        <h2 class="mb-4">TOP CATEGORIES FOR HIM</h2>
+        <div class="row">
+            <div class="col-md-3 col-sm-4 col-xs-6" *ngFor="let myImage of menImages">
+                <div class="card mb-2">
+                    <img class="card-img-top" [src]="myImage.imageUrl" [alt]="myImage.imageAlt" (click)="homePageImageClicked(myImage.imageId, 'men')">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- WOMEN CATEGORY -->
+    <div class="mt-5">
+        <h2 class="mb-4">TOP CATEGORIES FOR HER</h2>
+        <div class="row">
+            <div class="col-md-3 col-sm-4 col-xs-6" *ngFor="let myImage of womenImages">
+                <div class="card mb-2">
+                    <img class="card-img-top" [src]="myImage.imageUrl" [alt]="myImage.imageAlt" (click)="homePageImageClicked(myImage.imageId, 'women')">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

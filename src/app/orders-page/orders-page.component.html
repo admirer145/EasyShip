@@ -1,0 +1,49 @@
+<div class="container mb-5" style="min-height: 450px">
+    <div *ngIf="!orders || (orders && !orders.length)">
+        <div class="row text-center">
+            <div class="col-12" style="margin-top: 4%;"> 
+                <img src="../../assets/noOrders.png" >
+            </div>
+            <div class="col-12 mt-5">
+                <button class="btn btn-primary" routerLink="/home">
+                    SHOP NOW
+                </button>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="orders">
+        <div class="row">
+            <div class="col-10 offset-1 mb-3" *ngFor="let order of ordersProduct; let i = index;">
+                <div class="card" style="height: 150px; font-weight: 400">
+                    <div class="row">
+                        <div class="col-md-2 col-sm-5 align-self-center">
+                            <img [src]='order.productImages.imageUrl' [alt] = 'order.productImages.imageAlt' style="height: 140px; width: 130px"> 
+                        </div>
+                        <div class="col-md-4 col-sm-7 align-self-center">
+                            <div class="mb-3">
+                                {{order.productName}}
+                            </div>
+                            <div *ngIf="order.productSeller" class="mb-3" style="font-weight: 300">
+                                Seller: {{order.productSeller}}
+                            </div>
+                            <div *ngIf="order.productSeller">
+                                Qty: {{order.productQuantity}}
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-sm-5 align-self-center">
+                            {{(order.productPrice * order.productQuantity) | currency:'INR'}}
+                        </div>
+                        <div class="col-md-4 col-sm-7 align-self-center">
+                            <div class="mb-4">
+                                Order Date: {{orders[i].orderDate}}
+                            </div>
+                            <div>
+                                Delivery by: {{orders[i].expectedDeliveryDate}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

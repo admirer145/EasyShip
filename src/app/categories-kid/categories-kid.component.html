@@ -1,0 +1,104 @@
+<div class="row mt-3 mb-3">
+    <div class="col-sm-2 col-xs-12 border-right">
+        <div id="kidCategory">
+            <div style="font-size: 1.3em;">
+                Boys Clothing
+            </div>
+            <ul class="list-unstyled">
+                <li>
+                <div (click)="onClickCategory('tShirts')">T-Shirts</div>
+                </li>
+                <li>
+                <div (click)="onClickCategory('shirt')">Shirts</div>
+                </li>
+                <li>
+                <div (click)="onClickCategory('shorts')">Shorts</div>
+                </li>
+                <li>
+                <div (click)="onClickCategory('jeans')">Jeans</div>
+                </li>
+                <li>
+                <div (click)="onClickCategory('trouser')">Trouser</div>
+                </li>
+            </ul>
+            <hr>
+            <div style="font-size: 1.3em;">
+                Girls Clothing
+            </div>
+            <ul class="list-unstyled">
+                <li>
+                <div (click)="onClickCategory('dresses')">Dresses</div>
+                </li>
+                <li>
+                <div (click)="onClickCategory('top')">Tops</div>
+                </li>
+                <li>
+                <div (click)="onClickCategory('tshirt')">Tshirts</div>
+                </li>
+                <li>
+                <div (click)="onClickCategory('clothingsets')">Clothing Sets</div>
+                </li>
+                <li>
+                <div (click)="onClickCategory('eyhinicwear')">Ethnic wear</div>
+                </li>
+            </ul>
+            <hr>
+            <div style="font-size: 1.3em;">
+                Infants
+            </div>
+            <ul class="list-unstyled">
+                <li>
+                <div (click)="onClickCategory('Rampers _ onesies')">Rampers & Onesies</div>
+                </li>
+                <li>
+                <div (click)="onClickCategory('infantClothingSets')">Clothing Sets</div>
+                </li>
+                <li>
+                <div (click)="onClickCategory('tshirt _ top')">Tshirts & Tops</div>
+                </li>
+                <li>
+                <div (click)="onClickCategory('infantDresses')">Dresses</div>
+                </li>
+                <li>
+                <div (click)="onClickCategory('bottomwear')">Bottom wear</div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-sm-10 col-xs-12">
+        <div class="row">
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-4"  *ngFor="let i of items;">
+                <div class="card" style="height: 280px; ">
+                    <img [src]="i['productImages'].imageUrl" class="img-responsive" style="height: 80%; width:100%">
+                    <div *ngIf="this.userService.isAdmin()"  class="w-100 text-center m-auto">
+                        <button class="btn btn-primary" (click)="deleteItem(i['productId'])">
+                            Delete Item
+                        </button>
+                    </div>
+                    <div *ngIf="!this.userService.isAdmin()" class="w-100 text-center m-auto">
+                        <div *ngIf="!isAddedToCart.get(i['productId'])">
+                            <button class="btn btn-primary" (click)="addToCart(i['productId'])">Add To Cart</button>
+                        </div>
+                        <div *ngIf="isAddedToCart.get(i['productId'])">
+                            <button class="btn btn-secondary" routerLink="/cart">Go To Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="ml-2" style="font-weight:400; font-size: 1.1em;">
+                    {{i['productBrand']}}
+                </div>
+                <div class="ml-2" style="font-weight:100;">
+                    {{i['productName']}}
+                </div>
+                <div class="ml-2 border-bottom" style="font-weight:400; font-size: 1.1em;">
+                    {{i['productPrice'] | currency: 'INR'}}
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-4 text-center" *ngIf="items && !items.length">
+               <!-- <div class=""> -->
+                    Uffff! NO ITEMS FOUND
+               <!-- </div> -->
+            </div>
+        </div>
+    </div>
+</div>

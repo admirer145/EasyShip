@@ -1,0 +1,7 @@
+#kidCategory ul li div{
+    color:blue;
+    cursor: pointer;
+}
+#kidCategory ul li :hover{
+    color: #6c757d;;
+}

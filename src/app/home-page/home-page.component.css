@@ -1,0 +1,32 @@
+.testing1{
+    border: 5px solid blue;
+}
+.testing2{
+    border: 5px solid green;
+}
+.testing3{
+    border: 5px solid red;
+}
+
+/* xs */
+#mainCarousel img {
+    height: 10em;
+}
+/* sm */
+@media (min-width: 768px) {
+    #mainCarousel img {
+        height: 18em;
+    }
+}
+/* md */
+@media (min-width: 992px) {
+    #mainCarousel img {
+        height: 23em;
+    }
+}
+/* lg */
+@media (min-width: 1200px) {
+    #mainCarousel img {
+        height: 29em;
+    }
+}

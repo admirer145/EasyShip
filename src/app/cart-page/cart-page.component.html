@@ -1,0 +1,100 @@
+<div class="container mb-4"> 
+
+    <!-- EMPTY CART -->
+    <div class="row text-center" *ngIf="!cartItems.length">
+        <div class="col-12">
+            <img src="../../assets/missingCartItem.png" alt="missingCartItem" class="img-responsive" style="height:350px; width:400px">
+        </div>
+        <div class="col-12 mb-2">
+            Missing Cart Items ?
+        </div>
+        <div class="col-12 mb-5">
+            <a routerLink="/home" class="btn btn-primary text-white">
+                Shop Now
+            </a>
+        </div>
+    </div>
+
+    <!-- Atleast One Item In cart -->
+    <div class="row" *ngIf="cartItems.length">
+        <!-- Left side items -->
+        <div class="col-lg-8 col-md-7 col-sm-12">
+            <div class="row mt-3 justify-content-between">
+                <h5 class="ml-3">
+                    My Cart ({{totalItemLength}} items)
+                </h5>
+                <h5 class="mr-3">
+                    TOTAL: {{totalPriceOfProducts | currency : 'INR'}}
+                </h5>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-12 border m-1" *ngFor="let item of cartItems; let i= index">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-5 col-sm-6 my-1">
+                            <img [src]="item.productImages.imageUrl" class="img-responsive" style="height: 200px; width: 150px;" [alt]="item.productImages.imageAlt">
+                        </div>
+                        <div class="col-lg-9 col-md-7 col-sm-6 my-1 align-self-center">
+                            <h5 *ngIf="item.productBrand">{{item.productBrand}}</h5>
+                            <p *ngIf="item.productName">{{item.productName}}</p>
+                            <p *ngIf="item.productSeller">Sold By: {{item.productSeller}}</p>
+                            <h5>{{(item.productPrice * item.productQuantity) | currency : 'INR'}}</h5>
+                            <div style="font-size: 1.2em;" class="mt-2">
+                                <button class="btn btn-dark rounded rounded-circle" [disabled]="item.productQuantity==1" (click)="quantityDecrement(i)">-</button>
+                                {{item.productQuantity}}
+                                <button class="btn btn-dark rounded rounded-circle" (click)="quantityIncrement(i)">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row m-2">
+                        <div class="col-12">
+                            <button class="ml-2 btn btn-secondary" (click)="removeProduct(item.productId)">REMOVE</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Side total bill -->
+        <div class="col-lg-4 col-md-5 col-sm-12 mt-3" style="min-height: 300px;">
+            <div class="card">
+                <div class="row mx-auto mt-3">
+                    <div class="col-12">
+                        <h4 class="text-secondary">PRICE DETAILS</h4>
+                    </div>
+                </div>
+                <hr>
+                <div class="row m-md-2 m-sm-0">
+                    <div class="col-8">
+                        Price ({{totalItemLength}} items)
+                    </div>
+                    <div class="col-4 text-dark">
+                        {{totalPriceOfProducts | currency : 'INR'}}
+                    </div>
+                </div>
+                <div class="row m-md-2 m-sm-0">
+                    <div class="col-8">
+                        Delivery Charges
+                    </div>
+                    <div class="col-4 text-success">
+                        FREE
+                    </div>
+                </div>
+                <hr>
+                <div class="row m-md-2 m-sm-0">
+                    <div class="col-8">
+                        Total Amount
+                    </div>
+                    <div class="col-4 text-dark">
+                        {{totalPriceOfProducts | currency : 'INR'}}
+                    </div>
+                </div>
+                <div class="row text-center my-3">
+                    <div class="col-12">
+                        <button class="btn text-white" style="background-color:tomato" (click)="placeOrder()">PLACE ORDER</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,13 @@
+
+#easyShipLogo {
+    height: 50px;
+    width: 90px;
+    filter: grayscale(10);
+}
+
+@media all and (min-width: 992px) {
+	.navbar .nav-item .dropdown-menu{ display: none; }
+	.navbar .nav-item:hover .nav-link{ color: rgb(7, 7, 7);  }
+	.navbar .nav-item:hover .dropdown-menu{ display: block; }
+	.navbar .nav-item .dropdown-menu{ margin-top:0; }
+}

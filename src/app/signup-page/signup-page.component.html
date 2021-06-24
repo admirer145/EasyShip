@@ -1,0 +1,44 @@
+<div class="container">
+    <div class="row">
+      <div class="card m-auto bg-white text-dark col-lg-6 col-md-8 col-sm-12">
+        <div class="card-header text-center row-3" style="font-size: 1.875em">
+          Sign Up
+        </div>
+        <div class="card-body row-5 ">
+          <form [formGroup]="signupForm">
+            <div class="form-group">
+              <input class="form-control" type="text" placeholder="Email" formControlName="email">
+              <div class="alert alert-danger"  *ngIf="(signupForm.get('email').touched && signupForm.get('email').invalid)">
+                  <p  *ngIf="signupForm.get('email').errors.emailValidation || signupForm.get('email').errors.required">
+                     Invalid Email
+                  </p>
+              </div>
+            </div>
+            <div class="form-group">
+              <input class="form-control" type="number" placeholder="Mobile Number" formControlName="mobileNumber">
+              <div class="alert alert-danger"  *ngIf="(signupForm.get('mobileNumber').touched && signupForm.get('mobileNumber').invalid)">
+                  <p *ngIf="signupForm.get('mobileNumber').errors.required || signupForm.get('mobileNumber').errors.phoneValidation">
+                     Invalid Mobile Number
+                  </p>
+              </div>
+            </div>
+            <div class="form-group">
+              <input class="form-control" type="password" placeholder="Password" name="password" formControlName="password">
+              <div class="alert alert-danger" *ngIf="(signupForm.get('password').touched && signupForm.get('password').invalid)">
+                <p *ngIf="signupForm.get('password').errors.required">
+                  Password is required
+                </p>
+                <p *ngIf="signupForm.get('password').errors.minlength">
+                  Minimum length is 6
+                </p>
+              </div>
+            </div>
+            <div class="text-center">
+              <button class="btn btn-primary btn-lg" [disabled]="!signupForm.valid" style="width: 50%;" type="submit" (click)="signupEventHandler()">SignUp</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  

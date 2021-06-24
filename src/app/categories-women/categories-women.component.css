@@ -1,0 +1,7 @@
+#womenCategory ul li div{
+    color:blue;
+    cursor: pointer;
+}
+#womenCategory ul li :hover{
+    color: #6c757d;;
+}

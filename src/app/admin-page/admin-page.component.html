@@ -1,0 +1,88 @@
+<div class="container mt-3 mb-5">
+    <div class="row">
+        <div class="col-md-8 offset-md-2 col-sm-12 offset-sm-0 text-center">
+            <h3>
+                Add Product
+            </h3>
+        </div>
+        <div class="col-md-8 offset-md-2 col-sm-12 offset-sm-0">
+            <form [formGroup]="addProductForm">
+                <div class="form-group">
+                    <label for="productName">Product Name</label>
+                    <input type="text" id="productName" formControlName="productName" class="form-control">
+                    <div class="alert alert-danger"  *ngIf="(addProductForm.get('productName').touched && addProductForm.get('productName').invalid)">
+                        <p *ngIf="addProductForm.get('productName').errors.required">
+                           Name is Required
+                        </p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="productSeller">Product Seller</label>
+                    <input type="text" id="productSeller" formControlName="productSeller" class="form-control">
+                    <div class="alert alert-danger"  *ngIf="(addProductForm.get('productSeller').touched && addProductForm.get('productSeller').invalid)">
+                        <p *ngIf="addProductForm.get('productSeller').errors.required">
+                            Seller is Required
+                         </p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="productBrand">Product Brand</label>
+                    <input type="text" id="productBrand" formControlName="productBrand" class="form-control">
+                    <div class="alert alert-danger"  *ngIf="(addProductForm.get('productBrand').touched && addProductForm.get('productBrand').invalid)">
+                        <p *ngIf="addProductForm.get('productBrand').errors.required">
+                            Brand is Required
+                         </p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="productPrice">Product Price</label>
+                    <input type="number" id="productPrice" formControlName="productPrice" class="form-control">
+                    <div class="alert alert-danger"  *ngIf="(addProductForm.get('productPrice').touched && addProductForm.get('productPrice').invalid)">
+                        <p *ngIf="addProductForm.get('productPrice').errors.required">
+                           Price is Required
+                        </p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="productFilter">Product Category</label>
+                    <select id="productFilter" name="productFilter" formControlName="productFilter" name="productFilter" class="form-control">
+                        <option value="men">Men</option>
+                        <option value="women">Women</option>
+                        <option value="kid">Kid</option>
+                    </select>
+                    <div class="alert alert-danger"  *ngIf="(addProductForm.get('productFilter').touched && addProductForm.get('productFilter').invalid)">
+                        <p *ngIf="addProductForm.get('productFilter').errors.required">
+                           Category is Required
+                        </p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="productCategory">Product Sub-Category</label>
+                    <input type="text" id="productCategory" formControlName="productCategory" class="form-control">
+                    <div class="alert alert-danger"  *ngIf="(addProductForm.get('productCategory').touched && addProductForm.get('productCategory').invalid)">
+                        <p *ngIf="addProductForm.get('productCategory').errors.required">
+                           Sub Category is Required
+                        </p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="productImage">Product Image Url</label>
+                    <input type="text" id="productImage" formControlName="productImage" class="form-control">
+                    <div class="alert alert-danger"  *ngIf="(addProductForm.get('productImage').touched && addProductForm.get('productImage').invalid)">
+                        <p *ngIf="addProductForm.get('productImage').errors.required">
+                           Image is Required
+                        </p>
+                    </div>
+                </div>
+                <div class="w-100 text-center">
+                    <button type="button" class="btn btn-primary" [disabled]="!this.addProductForm.valid" (click)="addProductFormEventHandler()">Add</button>
+                </div>
+            </form>            
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-md-8 offset-md-2 col-sm-12 offset-sm-0 text-center">
+           Note: To delete a product go to category page
+        </div>
+    </div>
+</div>

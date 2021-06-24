@@ -1,0 +1,7 @@
+#categories ul li div{
+    color:blue;
+    cursor: pointer;
+}
+#categories ul li :hover{
+    columns: #6c757d;;
+}

@@ -1,0 +1,127 @@
+<div class="container">
+    <div class="row mt-3">
+        <div class="col-7">
+            <div class="row m-md-2 m-sm-0">
+                Select Delivery Address
+            </div>
+            <hr>
+            <div class="row m-md-2 m-sm-0 ">
+                <div class="form-check m-2 w-100 border" *ngFor="let address of userAddress; let indx = index" >
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="addressRadio" 
+                           [checked]="indx==0" [value]="address['addressId']" (change)="radioButtonHandler(address)">
+                    <label class="form-check-label" for="addressRadio" >
+                        <div class="mb-2">
+                            {{address['name']}}
+                        </div>
+                        <div class="mb-2">
+                            {{address.houseNumber}}, {{address.street}},
+                            {{address.city}}, {{address.state}} - {{address.pincode}}
+                        </div>
+                        <div class="mb-2">
+                            Mobile: {{address['mobileNumber']}}
+                        </div>
+                    </label>
+                    <div class="m-1">
+                        <button class="btn btn-danger" (click)="removeAddressById(address['addressId'])">Remove</button>
+                    </div>
+                </div>
+            </div>
+            <div class="row m-md-2 m-sm-0">
+                
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addAddress">
+                    + Add New Address
+                </button>
+                
+                <!-- Modal -->
+                <div class="modal fade" id="addAddress" tabindex="-1" role="dialog" aria-labelledby="addAddressTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" >
+                                        Add New Address
+                                </h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close" #closeBtn>
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div>
+                                <form class="form-group" [formGroup]="addressForm">
+                                    <div class="modal-body">
+                                        <div class="mb-1">
+                                            <input type="text" class="form-control" formControlName="name" placeholder="Name*" />
+                                        </div>
+                                        <div class="mb-1">
+                                            <input type="text" class="form-control" formControlName="mobileNumber" placeholder="Mobile Number*" />
+                                        </div>
+                                        <div class="mb-1">
+                                            <input type="text" class="form-control" formControlName="houseNumber" placeholder="House No*" />
+                                        </div>
+                                        <div class="mb-1">
+                                            <input type="text" class="form-control" formControlName="street" placeholder="Street*" />
+                                        </div>
+                                        <div class="mb-1">
+                                            <input type="text" class="form-control" formControlName="city" placeholder="City*" />
+                                        </div>
+                                        <div class="mb-1">
+                                            <input type="text" class="form-control" formControlName="state" placeholder="State*" />
+                                        </div>
+                                        <div class="mb-1">
+                                            <input type="text" class="form-control" formControlName="pincode" placeholder="Pincode*" />
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <!-- <button type="button" class="btn btn-lg btn-primary mr-auto" data-dismiss="modal">Close</button> -->
+                                        <button type="button" [disabled]="!addressForm.valid" class="btn btn-lg btn-primary m-auto" (click)="addressFormHandler(addressForm.value)"> Add Address </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-5">
+            <div class="row m-md-2 m-sm-0">
+                Delivery Estimates
+            </div>
+            <div class="row m-md-2 m-sm-0" *ngFor="let item of estDeliveryDate; let i =index;">
+                    <img [src]="orderItems[i].productImages.imageUrl" style="width:80px; height:80px" class="mr-2">
+                    <div class="align-self-center">
+                        Estimated Delivery By {{item}} 
+                    </div>
+            </div>
+            <hr>
+            <div class="row m-md-2 m-sm-0">
+                <div class="col-8">
+                    Total MRP ({{totalLengthOfProducts}} items)
+                </div>
+                <div class="col-4 text-dark">
+                    {{totalPriceOfProducts | currency : 'INR'}}
+                </div>
+            </div>
+            <div class="row m-md-2 m-sm-0">
+                <div class="col-8">
+                    Delivery Charges
+                </div>
+                <div class="col-4 text-success">
+                    FREE
+                </div>
+            </div>
+            <hr>
+            <div class="row m-md-2 m-sm-0">
+                <div class="col-8">
+                    Total Amount
+                </div>
+                <div class="col-4 text-dark">
+                    {{totalPriceOfProducts | currency : 'INR'}}
+                </div>
+            </div>
+            <div class="row text-center my-3">
+                <div class="col-12">
+                    <button class="btn text-white" style="background-color:tomato" (click)="checkout()">CONTINUE</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
